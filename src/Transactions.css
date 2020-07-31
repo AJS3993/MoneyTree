@@ -1,0 +1,7 @@
+#info_envio.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: rgb(152, 179, 201);
+}
+
+#info_envio.table-striped>tbody>tr:nth-of-type(even) {
+    background-color: rgb(205, 214, 221);
+}
