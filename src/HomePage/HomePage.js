@@ -16,10 +16,13 @@ import {
   MDBDropdownMenu,
   MDBDropdownItem,
   MDBCard,
+  MDBCardBody,
   MDBRow,
   MDBCol,
   MDBProgress,
-  MDBCardGroup
+  MDBCardGroup,
+  MDBTable,
+  MDBTableHead
 } from 'mdbreact';
 import './HomePage.css';
 import Tra from '../Transactions'
@@ -129,9 +132,9 @@ class HomePage extends React.Component {
 
              <MDBCol md='1'></MDBCol>
           
-           <MDBCol md='4'>
+           <MDBCol md='3'>
            <br/><br/>
-           <MDBCard className='my-5 z-depth-2 p-2 green lighten-1 '>
+           <MDBCard id='gcard' className='my-5 z-depth-2 p-2'>
            <MDBCardGroup>
            <MDBCard className='cascading-admin-card red m-2 rounded z-depth-2 p-2'>
                 <div>
@@ -200,12 +203,15 @@ class HomePage extends React.Component {
 </MDBCard>
            </MDBCol>
 
-           <MDBCol md='2'></MDBCol>
+           <MDBCol md='4'></MDBCol>
             
-             <MDBCol md='4'>
+             <MDBCol md='3'>
              <br/><br/>
-           <MDBCard className='my-5 z-depth-2 p-2 green lighten-1'>
+           
+           <MDBCard id='gcard' className='my-5 z-depth-2 p-2'>
+         
            <Tra/> 
+      
            </MDBCard>
           
            </MDBCol>

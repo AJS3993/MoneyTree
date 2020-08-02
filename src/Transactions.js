@@ -1,8 +1,6 @@
-import React from 'react';
-import {MDBTableHead, MDBTableBody,MDBTable,MDBBadge} from 'mdbreact';
+import React, {Component} from 'react';
+import {MDBSelect,MDBTable,MDBBtn,MDBTableHead,MDBTableBody,MDBCard, MDBContainer, MDBIcon} from 'mdbreact';
 import './Transactions.css'
-
-
 
 export function formatPrice(cents) {
   return (cents / 100).toLocaleString("en-US", {
@@ -12,49 +10,78 @@ export function formatPrice(cents) {
 }
 
 
-
-
-class Tra extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-        formValues: {},
-        transactions: []
-    }
+class Tra extends Component{
+  state = {
+    transactions: [
+      {
+        desc: 'milk',
+        cat: 'groceries',
+        num: "120000",
+      },
+      {
+        desc: 'Banana',
+        cat: 'groceries',
+        num: "300",
+      },
+    ],
+    newPost: '',
+    options: [
+      {
+        text: "Rent",
+        value: "1"
+      },
+      {
+        text: "Groceries",
+        value: "2"
+      }]
+  }
+handleSelectChange = (e) =>{
+ console.log(e)
 }
 
- 
-handleChange(event) {
-  event.preventDefault();
-  let formValues = this.state.formValues;
-  let name = event.target.name;
-  let value = event.target.value;
-
-  formValues[name] = value;
-
-  this.setState({formValues})
-}
-
-handleSubmit(event) {
-  event.preventDefault();
-  console.log(this.state.formValues);
-
-  this.setState({ 
-   transactions: this.state.transactions.concat(this.state.formValues)
-  })
-}
-  
-  render(){
-    return (
-      <>
-       
-
+  handleOnChange = (e) =>{
+    this.setState({
+      [e.target.name]:e.target.value
+    })
+  }
+  handleOnClick = (e) => {
+    this.setState(prevState => ({
+      transactions:[{
+        desc: prevState.desc,
+        cat: prevState.cat,
+        num: prevState.newPost},...prevState.transactions]
+    }))
+  }
+  render () {
+    let transactions = this.state.transactions.map((post, i) => {
+      return(
+        
+        
+      
+   
+      <tr key={i}> 
+          
+          
+          <td  className="text-center">{post.desc}</td>
+          <td className="text-center">{post.cat}</td>
+          <td  className="text-right">{formatPrice(post.num)}</td>
+         
+          </tr>
+      
      
+  
 
- 
+      )
+    })
+  return (
+   <>
+   
 
-<MDBTable small striped id="info_envio" className='z-depth-2'>
+
+   
+   <div>
+
+   <MDBTable small striped id="info_envio" className='z-depth-2'>
       <MDBTableHead>
         <tr className='border border-bottom-0 success-color'>
           <th className='border-0 white-text font-weight-bold px-2'>Name</th>
@@ -64,39 +91,51 @@ handleSubmit(event) {
       </MDBTableHead>
 
       <MDBTableBody>
-      {
-          this.state.transactions.map((k)=>{
-            return (
-              <tr>
-                <td key={k}>{k.name}</td>
-                <td className="text-center" key={k}>{k.type}</td>
-                <td className="text-right" key={k}> <MDBBadge className='p-2 z-depth-2'>{formatPrice(k.amount)}</MDBBadge></td>
-                </tr>
-              )
-          })
-        }
+
+      {transactions}
       </MDBTableBody>
     </MDBTable>
-<form onSubmit={this.handleSubmit.bind(this)}>
-  
-  <label> Name:
-  <input type='text' name="name"  value={this.state.formValues["name"]} onChange={this.handleChange.bind(this)}/>
-  </label>
 
-  <label> Type:
-  <input type='text' name="type"  value={this.state.formValues["type"]} onChange={this.handleChange.bind(this)}/>
-  </label>
+      <div>
 
-  <label> Amount:
-  <input type='text' name="amount"  value={this.state.formValues["amount"]} onChange={this.handleChange.bind(this)}/>
-  </label>
-  
-  <input type="submit" value="Submit" />
-</form>
+<MDBCard id='formCard' className='p-2 m-3 success-color z-depth-2'>
 
-      </>
-    )
+<h3 className='white-text text-center'>Add Transaction</h3>
+
+<MDBContainer className='w-100 '>
+
+
+{/* <MDBSelect outline
+getTextContent={this.handleSelectChange}
+          className='px-2 m-0 w-50 float-right'
+          options={this.state.options}
+          color="success"
+          label='cat'
+        /> */}
+
+  <input name="cat" onChange={this.handleOnChange}></input>
+            <input className='w-50' placeholder='Title' name="desc" value={this.state.desc} onChange={this.handleOnChange}></input>
+      
+  </MDBContainer>
+
+  <MDBContainer className='w-100'>
+
+<input className='w-50' placeholder='$' type='number' name="newPost" value={this.state.newPost} onChange={this.handleOnChange}></input>
+<span className='float-right'>{formatPrice(this.state.newPost)}</span>
+
+
+       
+        </MDBContainer>  
+    
+        <MDBContainer className='w-100 p-0 m-0'>
+        <MDBBtn floating className='m-3 float-right' onClick={this.handleOnClick}><MDBIcon className='success-text white' icon="plus" /></MDBBtn>
+        </MDBContainer> 
+        </MDBCard>
+      </div>
+    </div>
+
+    </>
+  );
   }
 }
-
 export default Tra;

@@ -1,7 +1,12 @@
-#info_envio.table-striped>tbody>tr:nth-of-type(odd) {
-    background-color: rgb(152, 179, 201);
+input {
+    background-color: rgb(215, 255, 235);
+    border: 1px white solid;
+    border-radius: 5px;
 }
 
-#info_envio.table-striped>tbody>tr:nth-of-type(even) {
-    background-color: rgb(205, 214, 221);
+button {
+    background-color: rgba(0, 200, 81);
+    border: 1px white solid;
+    border-radius: 5px;
 }
+
