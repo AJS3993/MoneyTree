@@ -25,7 +25,7 @@ import {
   MDBTableHead
 } from 'mdbreact';
 import './HomePage.css';
-import Tra from '../Transactions'
+import Tra from '../Transactions';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -122,104 +122,12 @@ class HomePage extends React.Component {
 
       <section id='home'>
        
-          <MDBMask overlay='gradient' >
-            
-         
-       
-
-
-           <MDBRow>
-
-             <MDBCol md='1'></MDBCol>
+          <MDBMask overlay='gradient'>
           
-           <MDBCol md='3'>
-           <br/><br/>
-           <MDBCard id='gcard' className='my-5 z-depth-2 p-2'>
-           <MDBCardGroup>
-           <MDBCard className='cascading-admin-card red m-2 rounded z-depth-2 p-2'>
-                <div>
-                  <MDBIcon icon='cog' className='float-right m-2' size='sm' style={{ opacity: '.6' }}/>
-                  <div className='data'>
-                    <p>RENT</p>
-                    <h4 className='font-weight-bold black-text'>$1200</h4>
-                  </div>
-                </div>
-                <MDBProgress material value={65} height="20px" className='mb-0 border border-dark'>
-                  65%
-                </MDBProgress>
-
-             
-              </MDBCard>
-
-              <MDBCard className='yellow m-2 rounded z-depth-2 p-2'>
-                <div>
-                  <MDBIcon icon='cog' className='float-right p-2' style={{ opacity: '.6' }} />
-                  <div className='data'>
-                    <p>BILLS</p>
-                    <h4 className='font-weight-bold dark-grey-text'>200</h4>
-                  </div>
-                </div>
-              
-                <MDBProgress material value={25} height="20px" className='mb-0 border border-dark'>
-                  25%
-                </MDBProgress>
-           
-              </MDBCard>
-</MDBCardGroup>
-
-<MDBCardGroup>
-           <MDBCard className='blue m-2 rounded z-depth-2 p-2'>
-                <div>
-                  <MDBIcon icon='cog' className='float-right m-2' size='sm' style={{ opacity: '.6' }}/>
-                  <div className='data'>
-                    <p>RENT</p>
-                    <h4 className='font-weight-bold black-text'>$1200</h4>
-                  </div>
-                </div>
-                <MDBProgress material value={65} height="20px" className='mb-0 border border-dark'>
-                  65%
-                </MDBProgress>
-
-             
-              </MDBCard>
-
-              <MDBCard className='orange m-2 rounded z-depth-2 p-2'>
-                <div>
-                  <MDBIcon icon='cog' className='float-right p-2' style={{ opacity: '.6' }} />
-                  <div className='data'>
-                    <p>BILLS</p>
-                    <h4 className='font-weight-bold dark-grey-text'>200</h4>
-                  </div>
-                </div>
-              
-                <MDBProgress material value={25} height="20px" className='mb-0 border border-dark'>
-                  25%
-                </MDBProgress>
-           
-              </MDBCard>
-</MDBCardGroup>
-
-
-</MDBCard>
-           </MDBCol>
-
-           <MDBCol md='4'></MDBCol>
-            
-             <MDBCol md='3'>
-             <br/><br/>
-           
-           <MDBCard id='gcard' className='my-5 z-depth-2 p-2'>
          
            <Tra/> 
       
-           </MDBCard>
           
-           </MDBCol>
-           <MDBCol md='1'></MDBCol>
-
-           </MDBRow>
-       
-            
           </MDBMask>
   
       </section>
