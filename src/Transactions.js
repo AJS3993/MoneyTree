@@ -55,24 +55,20 @@ handleSelectChange = (e) =>{
   render () {
     let transactions = this.state.transactions.map((post, i) => {
       return(
-        
-        
-      
-   
       <tr key={i}> 
-          
-          
           <td  className="text-center">{post.desc}</td>
           <td className="text-center">{post.cat}</td>
           <td  className="text-right">{formatPrice(post.num)}</td>
          
           </tr>
-      
-     
-  
-
       )
-    })
+    }
+  )
+
+  let options = this.state.options.map((opt, o) => {
+    return(
+        <option key={o} className="text-center">{opt.text}</option>
+       )})
   return (
    <>
    
@@ -102,34 +98,28 @@ handleSelectChange = (e) =>{
 
 <h3 className='white-text text-center'>Add Transaction</h3>
 
-<MDBContainer className='w-100 '>
+<MDBContainer className='w-100 m-2'>
 
+            <input placeholder='Title' name="desc" value={this.state.desc} onChange={this.handleOnChange} className='w-50 mx-n2 my-1'></input>
+            <select name="cat" onChange={this.handleOnChange} className="custom-select success-color w-50 float-right mr-n2">
+              <option>Category</option>
+ {options}
+  </select>
 
-{/* <MDBSelect outline
-getTextContent={this.handleSelectChange}
-          className='px-2 m-0 w-50 float-right'
-          options={this.state.options}
-          color="success"
-          label='cat'
-        /> */}
-
-  <input name="cat" onChange={this.handleOnChange}></input>
-            <input className='w-50' placeholder='Title' name="desc" value={this.state.desc} onChange={this.handleOnChange}></input>
-      
   </MDBContainer>
 
-  <MDBContainer className='w-100'>
+  <MDBContainer className='w-100 border p-3 rounded'>
 
-<input className='w-50' placeholder='$' type='number' name="newPost" value={this.state.newPost} onChange={this.handleOnChange}></input>
-<span className='float-right'>{formatPrice(this.state.newPost)}</span>
+<input className='w-50 my-2' placeholder='$' type='number' name="newPost" value={this.state.newPost} onChange={this.handleOnChange}></input>
+<span className=' border p-2 rounded white-text float-right'>{formatPrice(this.state.newPost)}</span>
 
 
        
         </MDBContainer>  
     
-        <MDBContainer className='w-100 p-0 m-0'>
-        <MDBBtn floating className='m-3 float-right' onClick={this.handleOnClick}><MDBIcon className='success-text white' icon="plus" /></MDBBtn>
-        </MDBContainer> 
+        <div className="d-flex justify-content-end">
+        <MDBBtn floating className='my-2 mb-2' onClick={this.handleOnClick}><MDBIcon className='success-text white' icon="plus" /></MDBBtn>
+        </div>
         </MDBCard>
       </div>
     </div>
